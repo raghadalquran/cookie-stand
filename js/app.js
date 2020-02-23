@@ -35,7 +35,9 @@ render : function (){
     //console.log(resultOfMultiply);
     this.outPutArr.push(resultOfMultiply);
     //console.log(resultOfMultiply);
-    
+    var liEl = document.createElement('li');
+      liEl.textContent = this.outPutArr[i];
+      ulEl.appendChild(liEl);
   }
   
 },
