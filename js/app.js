@@ -1,258 +1,126 @@
 'use strict'
-var a ;
+
+var arrayHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+var container = document.getElementById('resturant');
+var tableEl = document.createElement('table');
 
 
-var seattle = {
-minCust : 23 ,
-maxCust : 65 ,
-averageCookies : 6.3 ,
-numOfCustomer : 0 ,
-totalNumOfCookies :0,
-array_14 : ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
-outPutArr : [],
-randomNumOfCustomer : function (){
-  seattle.numOfCustomer = getRandom(this.minCust , this.maxCust);
-}, 
-render : function (){
-  var bodyEl = document.getElementById('body-element');
-  console.log(bodyEl);
-  var mainEl = document.createElement('main');
-  bodyEl.append(mainEl);
-  var h2El = document.createElement('h2');
-  mainEl.appendChild(h2El);
-  h2El.textContent = 'Seattle';
-  var divEl = document.createElement('div');
-  mainEl.appendChild(divEl);
-  var ulEl = document.createElement('ul');
-  divEl.appendChild(ulEl);
-
-  for(var i = 0 ; i < this.array_14.length ; i++){
-    this.randomNumOfCustomer();
-    //console.log(this.numOfCustomer);
-    var numOfCustomer=this.numOfCustomer;
-    //console.log(this.numOfCustomer);
-    var cookiesPerHour = Math.floor(numOfCustomer * this.averageCookies);
-    //console.log(cookiesPerHour);
-    var resultOfMultiply = `at ${this.array_14[i]} :  ${cookiesPerHour} cookies `;
-    //console.log(resultOfMultiply);
-    this.outPutArr.push(resultOfMultiply);
-    //console.log(resultOfMultiply);
-    var liEl = document.createElement('li');
-      liEl.textContent = this.outPutArr[i];
-      ulEl.appendChild(liEl);
-    
-  }
+function Resturant(name, minCust, maxCust, averageCookies) {
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.averageCookies = averageCookies;
+  this.numOfCustomer = 0;
+  this.cookies = [];
+  this.total=0;
+  //this.numOfCustomerArr = [];
   
 }
+Resturant.prototype.getTheRandom = function (minCust, maxCust) {
+    this.numOfCustomer = getRandom(this.minCust , this.maxCust);
+  //for(var s=0; s < arrayHours.length ;s++){
+  //this.numOfCustomerArr.push(Math.floor(getRandom(this.minCust, this.maxCust) * this.averageCookies));}
+  //console.log(this.numOfCustomerArr);
+} 
 
-};
-    seattle.randomNumOfCustomer();
-    seattle.render();
+Resturant.prototype.header = function () {
+ 
+  container.appendChild(tableEl);
+  var tr1El = document.createElement('tr');
+  tableEl.appendChild(tr1El);
+  var th1El = document.createElement('th');
+  tr1El.appendChild(th1El);
+  for (var j = 0; j < arrayHours.length; j++) {
+    var th1El = document.createElement('th');
+    th1El.textContent = arrayHours[j];
+    tr1El.appendChild(th1El);
+  }
+  var th1El = document.createElement('th');
+  tr1El.appendChild(th1El);
+  th1El.textContent = 'Daily Location Total';
 
+}
 
+Resturant.prototype.render = function () {
 
-    var Tokyo = {
-      minCust : 3 ,
-      maxCust : 24 ,
-      averageCookies : 1.2 ,
-      numOfCustomer : 0 ,
-      array_14 : ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
-      outPutArr : [],
-      randomNumOfCustomer : function (){
-        Tokyo.numOfCustomer = getRandom(this.minCust , this.maxCust);
-      }, 
-      render : function (){
-        var bodyEl = document.getElementById('body-element');
-        console.log(bodyEl);
-        var mainEl = document.createElement('main');
-        bodyEl.append(mainEl);
-        var h2El = document.createElement('h2');
-        mainEl.appendChild(h2El);
-        h2El.textContent = 'Tokyo';
-        var divEl = document.createElement('div');
-        mainEl.appendChild(divEl);
-        var ulEl = document.createElement('ul');
-        divEl.appendChild(ulEl);
-      
-        for(var i = 0 ; i < this.array_14.length ; i++){
-          this.randomNumOfCustomer();
-          //console.log(this.numOfCustomer);
-          var numOfCustomer=this.numOfCustomer;
-          //console.log(this.numOfCustomer);
-          var cookiesPerHour = Math.ceil(numOfCustomer * this.averageCookies);
-          //console.log(cookiesPerHour);
-          var resultOfMultiply = `at ${this.array_14[i]} :  ${numOfCustomer} cookies `;
-          //console.log(resultOfMultiply);
-          this.outPutArr.push(resultOfMultiply);
-          //console.log(resultOfMultiply);
-          var liEl = document.createElement('li');
-            liEl.textContent = this.outPutArr[i];
-            ulEl.appendChild(liEl);
-          
-        }
-        
+      var tr2El = document.createElement('tr');
+      tableEl.appendChild(tr2El);
+      var td1El = document.createElement('td');
+      td1El.textContent = this.name;
+      tr2El.appendChild(td1El);
+      for(var k = 0; k < arrayHours.length; k++){
+      var td1El = document.createElement('td');
+      this.getTheRandom();
+      td1El.textContent =Math.floor( this.numOfCustomer * this.averageCookies);
+      tr2El.appendChild(td1El);
       }
-      
-      };
-      Tokyo.randomNumOfCustomer();
-      Tokyo.render();
-      
+      var td1El = document.createElement('td');
+      td1El.textContent = this.totalCookies();
+      tr2El.appendChild(td1El);
+    }
 
+Resturant.prototype.arrayOfCookies = function(){
+      for(var b = 0; b < arrayHours.length; b++){
+      this.getTheRandom();
+      this.cookies.push(Math.floor(this.numOfCustomer*this.averageCookies));
+       console.log(this.cookies);
+      }
 
-      var Dubai = {
-        minCust : 11 ,
-        maxCust : 38 ,
-        averageCookies : 3.7 ,
-        numOfCustomer : 0 ,
-        array_14 : ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
-        outPutArr : [],
-        randomNumOfCustomer : function (){
-        Dubai.numOfCustomer = getRandom(this.minCust , this.maxCust);
-        }, 
-        render : function (){
-          var bodyEl = document.getElementById('body-element');
-          console.log(bodyEl);
-          var mainEl = document.createElement('main');
-          bodyEl.append(mainEl);
-          var h2El = document.createElement('h2');
-          mainEl.appendChild(h2El);
-          h2El.textContent = 'Dubi';
-          var divEl = document.createElement('div');
-          mainEl.appendChild(divEl);
-          var ulEl = document.createElement('ul');
-          divEl.appendChild(ulEl);
-        
-          for(var i = 0 ; i < this.array_14.length ; i++){
-            this.randomNumOfCustomer();
-            //console.log(this.numOfCustomer);
-            var numOfCustomer=this.numOfCustomer;
-            //console.log(this.numOfCustomer);
-            var cookiesPerHour = Math.ceil(numOfCustomer * this.averageCookies);
-            //console.log(cookiesPerHour);
-            var resultOfMultiply = `at ${this.array_14[i]} :  ${numOfCustomer} cookies `;
-            //console.log(resultOfMultiply);
-            this.outPutArr.push(resultOfMultiply);
-            //console.log(resultOfMultiply);
-            var liEl = document.createElement('li');
-              liEl.textContent = this.outPutArr[i];
-              ulEl.appendChild(liEl);
-            
-          }
-          
-        }
-        
-        };
-        Dubai.randomNumOfCustomer();
-        Dubai.render();
-        
+    }
+
+Resturant.prototype.totalCookies = function(){
+  var total2 = 0;
+  for(var r = 0; r < arrayHours.length; r++){
+  this.arrayOfCookies();
+  total2 = total2 + this.cookies[r];
+  //console.log(this.total2);
+  // this.total2=total2;}
+  //total2 = total2 + Math.floor(this.numOfCustomer * this.averageCookies);
+}}
+//console.log(this.total);
+
+    /*Resturant.prototype.data = function (){
+      var cookiesPerCustomer = [];
+      var total=0;
+      for (var i = 0; i < 5; i++) {
+      //total = total + Math.floor(this.numOfCustomer * this.averageCookies);
+
+      total = this.getTheRandom() * this.averageCookies;
+      cookiesPerCustomer.push(parseInt(total));
+      }
+      return total;
+      console.log('total= ',total);
+
+    }*/
+
+var seattle = new Resturant('Seattle', 23, 65, 6.3);
+seattle.header();
+seattle.render();
+//seattle.data();
 
 
 
-        var Paris = {
-          minCust : 11 ,
-          maxCust : 38 ,
-          averageCookies : 3.7 ,
-          numOfCustomer : 0 ,
-          array_14 : ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
-          outPutArr : [],
-          randomNumOfCustomer : function (){
-          Paris.numOfCustomer = getRandom(this.minCust , this.maxCust);
-          }, 
-          render : function (){
-            var bodyEl = document.getElementById('body-element');
-            console.log(bodyEl);
-            var mainEl = document.createElement('main');
-            bodyEl.append(mainEl);
-            var h2El = document.createElement('h2');
-            mainEl.appendChild(h2El);
-            h2El.textContent = 'Paris';
-            var divEl = document.createElement('div');
-            mainEl.appendChild(divEl);
-            var ulEl = document.createElement('ul');
-            divEl.appendChild(ulEl);
-          
-            for(var i = 0 ; i < this.array_14.length ; i++){
-              this.randomNumOfCustomer();
-              //console.log(this.numOfCustomer);
-              var numOfCustomer=this.numOfCustomer;
-              //console.log(this.numOfCustomer);
-              var cookiesPerHour = Math.ceil(numOfCustomer * this.averageCookies);
-              //console.log(cookiesPerHour);
-              var resultOfMultiply = `at ${this.array_14[i]} :  ${numOfCustomer} cookies `;
-              //console.log(resultOfMultiply);
-              this.outPutArr.push(resultOfMultiply);
-              //console.log(resultOfMultiply);
-              var liEl = document.createElement('li');
-                liEl.textContent = this.outPutArr[i];
-                ulEl.appendChild(liEl);
-              
-            }
-            
-          }
-          
-          };
-          Paris.randomNumOfCustomer();
-          Paris.render();
-          
+// console.log(seattle.getTheRandom());
 
+var tokyo = new Resturant('Tokyo', 3 , 24 , 1.2 );
+//tokyo.render();
+tokyo.render();
+//tokyo.data();
 
-
-
-          var Lima = {
-            minCust : 11 ,
-            maxCust : 38 ,
-            averageCookies : 3.7 ,
-            numOfCustomer : 0 ,
-            array_14 : ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
-            outPutArr : [],
-            randomNumOfCustomer : function (){
-              Lima.numOfCustomer = getRandom(this.minCust , this.maxCust);
-            }, 
-            render : function (){
-              var bodyEl = document.getElementById('body-element');
-              console.log(bodyEl);
-              var mainEl = document.createElement('main');
-              bodyEl.append(mainEl);
-              var h2El = document.createElement('h2');
-              mainEl.appendChild(h2El);
-              h2El.textContent = 'Lima';
-              var divEl = document.createElement('div');
-              mainEl.appendChild(divEl);
-              var ulEl = document.createElement('ul');
-              divEl.appendChild(ulEl);
-            
-              for(var i = 0 ; i < this.array_14.length ; i++){
-                this.randomNumOfCustomer();
-                //console.log(this.numOfCustomer);
-                var numOfCustomer=this.numOfCustomer;
-                //console.log(this.numOfCustomer);
-                var cookiesPerHour = Math.ceil(numOfCustomer * this.averageCookies);
-                //console.log(cookiesPerHour);
-                var resultOfMultiply = `at ${this.array_14[i]} :  ${numOfCustomer} cookies `;
-                //console.log(resultOfMultiply);
-                this.outPutArr.push(resultOfMultiply);
-                //console.log(resultOfMultiply);
-                var liEl = document.createElement('li');
-                  liEl.textContent = this.outPutArr[i];
-                  ulEl.appendChild(liEl);
-                
-              }
-              
-            }
-            
-            };
-            Lima.randomNumOfCustomer();
-            Lima.render();
-            
-  
-
-
-
-
+var dubi = new Resturant('Dubi', 11, 38 , 3.7);
+//dubi.render();
+dubi.render();
+//dubi.data();
+var paris = new Resturant('Paris', 20, 38 , 2.3);
+//paris.render();
+paris.render();
+//paris.data();
+var lima = new Resturant('Lima', 2, 16 , 4.6);
+//lima.render();*/
+lima.render();
+//lima.data();
 //helper function to calculate random number of customer
 function getRandom(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
-
+  return Math.floor(Math.random() * (max - min)) + min; }//The maximum is exclusive and the minimum is inclusive
