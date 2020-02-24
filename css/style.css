@@ -1,0 +1,26 @@
+body{
+    font-family:cursive;
+    font-size: 19px;
+    line-height: 28px;
+    word-spacing: 1px;
+
+}
+
+div {
+    margin: 50px;
+    padding: 2px;
+    border: 0;
+    font-size: 100%;
+    font: initial;
+    vertical-align: baseline;
+}
+ul {
+    list-style: initial;
+}
+
+h2 {
+    padding:10px;
+    padding: 15px;
+    font: bolder;
+    color: red;
+}
