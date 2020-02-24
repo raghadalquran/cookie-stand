@@ -7,6 +7,7 @@ minCust : 23 ,
 maxCust : 65 ,
 averageCookies : 6.3 ,
 numOfCustomer : 0 ,
+totalNumOfCookies :0,
 array_14 : ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
 outPutArr : [],
 randomNumOfCustomer : function (){
@@ -30,9 +31,9 @@ render : function (){
     //console.log(this.numOfCustomer);
     var numOfCustomer=this.numOfCustomer;
     //console.log(this.numOfCustomer);
-    var cookiesPerHour = Math.ceil(numOfCustomer * this.averageCookies);
+    var cookiesPerHour = Math.floor(numOfCustomer * this.averageCookies);
     //console.log(cookiesPerHour);
-    var resultOfMultiply = `at ${this.array_14[i]} :  ${numOfCustomer} cookies `;
+    var resultOfMultiply = `at ${this.array_14[i]} :  ${cookiesPerHour} cookies `;
     //console.log(resultOfMultiply);
     this.outPutArr.push(resultOfMultiply);
     //console.log(resultOfMultiply);
@@ -244,10 +245,6 @@ render : function (){
             Lima.render();
             
   
-
-
-
-
 
 
 
