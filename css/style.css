@@ -1,11 +1,17 @@
-body{
-    font-family:cursive;
-    font-size: 19px;
+body {
+    font-family: inherit;
+    font-size: 20px;
     line-height: 28px;
     word-spacing: 1px;
-    background-color: slategray;
+    padding: 30px;
+    margin: -7px;
+    background-color: wheat;
+    color: #135848;
+    background-image: url("img/pink.jpg");
 }
-
+main{
+    height: 550px;
+}
 div {
     margin: 50px;
     padding: 2px;
@@ -14,25 +20,99 @@ div {
     font: initial;
     vertical-align: baseline;
 }
-ul {
-    list-style: initial;
+h1 {
+    padding-top: 20px;
+    font-size: 300%;
+    padding-bottom: 25px;
+    color: #135848;
+    text-align: justify;
+    padding-left: 6px;
+    background-color: #b7816c;
+    margin-right: 404px; 
 }
-
 h2 {
     padding:10px;
     padding: 15px;
     font: bolder;
-    color: red;
+    font-size: 36px;
+    text-align: center;
+    color:#135848;
 }
+h3 {
+    font-size: 25px;
+    padding: 4px;
+    color: #135848;
+    margin: -3px;
+    display: unset;
+    font: bold;
+    }
+ul li  {margin: 3px;
+        padding: 10px;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        display: inline;
+        text-align: center;
+    }
+p {
+        padding: 10px;
+        width: 673px;
+        text-align: justify;
+        padding-bottom: 30px;
+        font:bold;
+    }
+#Our-Busniss {
+        padding: 10px;
+        padding-top: 50px;
+    
+     }
+img {
+        float: right;
+    }
+iframe{
+        
+        border-style: none;
+        width: 25%; 
+        height: 50px
+    }
+a {
+        text-decoration: none;
+        color:#135848;
+     }
+footer{
+        background-color: #b7816c;
+
+     }
+    
 table , tr , td , th {
     border: 1px solid black;
-
     margin: 5px;
     padding: 10px;
     font-size: 100%;
     font: -webkit-xxx-large;
     vertical-align: baseline;
-    background-color: wheat;
+    background-color: teal;
     font-family: cursive;
+    color: white;
+    text-align: center;
 }
 
+.OpeningHours {
+    font-family: Arial,Verdana;
+    color: black;
+    font-size: 14px;
+    font-weight: bolder;
+    padding-bottom: 20px;
+    display:inline;
+  }
+
+
+
+
+    
+    
+
+ 
+ 
+ 
