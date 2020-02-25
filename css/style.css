@@ -3,7 +3,7 @@ body{
     font-size: 19px;
     line-height: 28px;
     word-spacing: 1px;
-
+    background-color: slategray;
 }
 
 div {
@@ -24,18 +24,15 @@ h2 {
     font: bolder;
     color: red;
 }
-table {
-    border:1px solid red;
+table , tr , td , th {
+    border: 1px solid black;
+
     margin: 5px;
     padding: 10px;
     font-size: 100%;
     font: -webkit-xxx-large;
     vertical-align: baseline;
+    background-color: wheat;
+    font-family: cursive;
 }
-tr{
-    padding: 10px;
 
-}
-td {
-    padding: 7px;
-}
