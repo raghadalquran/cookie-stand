@@ -1,40 +1,41 @@
 'use strict'
-
+//global variables
 var arrayHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 var container = document.getElementById('resturant');
 var tableEl = document.createElement('table');
+container.appendChild(tableEl);
 var totalTotal = 0;
 var newArr = [];
 var finalTotal = 0;
+var salmonsShops = [];
 
+//the constructor function
 function Resturant(name, minCust, maxCust, averageCookies) {
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.averageCookies = averageCookies;
   this.cookies = [];
-  this.total=0;
-  
-  
+  this.total = 0;
+  this.getTheRandom();
+  this.newLocations;
+  salmonsShops.push(this);
+  //console.log(this);
 }
+//calculate the random  
 Resturant.prototype.getTheRandom = function () {
-    var numOfCustomer = getRandom(this.minCust , this.maxCust);
-    return numOfCustomer;
-  
-} 
-Resturant.prototype.arrayOfCookies = function(){
-  for(var b = 0; b < arrayHours.length; b++){
-  // this.getTheRandom();
-  this.cookies.push(Math.floor(this.getTheRandom()*this.averageCookies));
-  // console.log(this.cookies);
-  this.total = this.total + this.cookies[b];
-   //console.log(this.total);
-  }
-
+  var numOfCustomer = getRandom(this.minCust, this.maxCust);
+  return numOfCustomer;
 }
-
-Resturant.prototype.header = function () {
- 
+//add the random number of cookies to cookies array and calculate the total    
+Resturant.prototype.arrayOfCookies = function () {
+  for (var b = 0; b < arrayHours.length; b++) {
+    this.cookies.push(Math.floor(this.getTheRandom() * this.averageCookies));
+    this.total = this.total + this.cookies[b];
+  }
+}
+//header of the table
+function header() {
   container.appendChild(tableEl);
   var tr1El = document.createElement('tr');
   tableEl.appendChild(tr1El);
@@ -48,87 +49,106 @@ Resturant.prototype.header = function () {
   var th1El = document.createElement('th');
   tr1El.appendChild(th1El);
   th1El.textContent = 'Total';
-
 }
-
+//render of the table
 Resturant.prototype.render = function () {
-
-      var tr2El = document.createElement('tr');
-      tableEl.appendChild(tr2El);
-      var td1El = document.createElement('td');
-      td1El.textContent = this.name;
-      tr2El.appendChild(td1El);
-      for(var k = 0; k < arrayHours.length; k++){
-      var td1El = document.createElement('td');
-      this.getTheRandom();
-      td1El.textContent =Math.floor( this.getTheRandom() * this.averageCookies);
-      tr2El.appendChild(td1El);
-      }
-      this.arrayOfCookies();
-      var td1El = document.createElement('td');
-      td1El.textContent = this.total;
-      tr2El.appendChild(td1El);
+  var tr2El = document.createElement('tr');
+  tableEl.appendChild(tr2El);
+  var td1El = document.createElement('td');
+  td1El.textContent = this.name;
+  tr2El.appendChild(td1El);
+  for (var k = 0; k < arrayHours.length; k++) {
+    var td1El = document.createElement('td');
+    this.getTheRandom();
+    td1El.textContent = Math.floor(this.getTheRandom() * this.averageCookies);
+    tr2El.appendChild(td1El);
+  }
+  this.arrayOfCookies();
+  var td1El = document.createElement('td');
+  td1El.textContent = this.total;
+  tr2El.appendChild(td1El);
+}
+//calculate total of total
+function newTotalOfTotal() {
+  var hourTotal;
+  var megaTotal = 0;
+  document.getElementsByTagName('table');
+  var trElF = document.createElement('tr');
+  tableEl.appendChild(trElF);
+  var td5 = document.createElement('td');
+  trElF.appendChild(td5);
+  td5.textContent = 'Total';
+  for (var hour = 0; hour < arrayHours.length; hour++) {
+    hourTotal = 0;
+    for (var shop = 0; shop < salmonsShops.length; shop++) {
+      hourTotal += salmonsShops[shop].cookies[hour];
     }
+    megaTotal += hourTotal;
+    var tdMegaTotal = document.createElement('td');
+    tdMegaTotal.textContent = hourTotal;
+    trElF.appendChild(tdMegaTotal);
+  }
+  var tdTotal = document.createElement('td');
+  tdTotal.textContent = megaTotal;
+  trElF.appendChild(tdTotal);
+}
+//new
+//for last row in the table
+/*function lastRow() {
+  for (var m = 0; m < arrayHours.length; m++) {
+    var tdEl = document.createElement('td');
+    tdEl.textContent = newLocations[m];
+    trEl.appendChild(tdEl);
+  }
+}*/
+//call the header of the table
+header();
+//creat new location to my table from the form
+var locations = document.getElementById('locations');
+locations.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var locationName = event.target.name.value;
+  var locationMax = event.target.max.value;
+  var locationMin = event.target.min.value;
+  var locationAvg = event.target.avg.value;
+  var newLocations = new Resturant(locationName, locationMax, locationMin, locationAvg);
+  newLocations.render();
+});
+//create new objects
+new Resturant('Seattle', 23, 65, 6.3);
+new Resturant('Tokyo', 3, 24, 1.2);
+new Resturant('Dubi', 11, 38, 3.7);
+new Resturant('Paris', 20, 38, 2.3);
+new Resturant('Lima', 2, 16, 4.6);
+//call the render function
+for (var i = 0; i < salmonsShops.length; i++) {
+  salmonsShops[i].render();
+ //console.log(salmonsShops);
+}
+//call the footer of my table 
+//lastRow();
+newTotalOfTotal(); 
+//helper function to calculate random number of customer
+function getRandom(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}//The maximum is exclusive and the minimum is inclusive
 
-Resturant.prototype.footer = function (){
+
+/*Resturant.prototype.footer = function (){
   var trEl = document.createElement('tr');
   tableEl.appendChild(trEl);
   var tdEl = document.createElement('td');
   trEl.appendChild(tdEl);
-  tdEl.textContent = 'Total';
+  tdEl.textContent = newLocations.locationName;
 
   for(var m = 0; m < arrayHours.length; m++){
   var tdEl = document.createElement('td');
-  tdEl.textContent = newArr[m];
+  tdEl.textContent = newLocations[m];
   trEl.appendChild(tdEl);
   }
   var tdEl = document.createElement('td');
   tdEl.textContent = finalTotal;
   trEl.appendChild(tdEl);
-}
-
-
-var seattle = new Resturant('Seattle', 23, 65, 6.3);
-seattle.header();
-seattle.getTheRandom();
-seattle.arrayOfCookies();
-seattle.render();
-
-var tokyo = new Resturant('Tokyo', 3 , 24 , 1.2 );
-tokyo.render();
-
-var dubi = new Resturant('Dubi', 11, 38 , 3.7);
-dubi.render();
-
-var paris = new Resturant('Paris', 20, 38 , 2.3);
-paris.render();
-
-var lima = new Resturant('Lima', 2, 16 , 4.6);
-lima.render();
-
-
-//calculate total of total
-function totalOfTotal(){
-  for(var t = 0; t < arrayHours.length; t++){
-    totalTotal = seattle.cookies[t]+tokyo.cookies[t]+dubi.cookies[t]+paris.cookies[t]+lima.cookies[t];
-    newArr.push(totalTotal);
-    finalTotal = finalTotal + newArr[t];
-  }
-  console.log(finalTotal);
-
-}
-
-
-totalOfTotal();
-console.log(newArr);
-seattle.footer();
-
-
-//helper function to calculate random number of customer
-function getRandom(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; }//The maximum is exclusive and the minimum is inclusive
-
-
-
+}*/
