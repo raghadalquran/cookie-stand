@@ -7,6 +7,7 @@ body {
     margin: -7px;
     background-color: wheat;
     color: #135848;
+    width: 100%;
 }
 main{
     height: 550px;

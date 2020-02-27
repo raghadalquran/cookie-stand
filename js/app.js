@@ -18,10 +18,9 @@ function Resturant(name, minCust, maxCust, averageCookies) {
   this.cookies = [];
   this.total = 0;
   this.getTheRandom();
-  this.newLocations;
+  //this.newLocations;
   salmonsShops.push(this);
-  //console.log(this);
-}
+this.render();}
 //calculate the random  
 Resturant.prototype.getTheRandom = function () {
   var numOfCustomer = getRandom(this.minCust, this.maxCust);
@@ -100,6 +99,11 @@ function newTotalOfTotal() {
     tdEl.textContent = newLocations[m];
     trEl.appendChild(tdEl);
   }
+  //remove the footer
+//var oldFooter = document.getElementById('footer');
+//oldFooter.parentNode.removeChild(oldFooter);
+newTotalOfTotal(); 
+
 }*/
 //call the header of the table
 header();
@@ -108,11 +112,18 @@ var locations = document.getElementById('locations');
 locations.addEventListener('submit', function (event) {
   event.preventDefault();
   var locationName = event.target.name.value;
-  var locationMax = event.target.max.value;
-  var locationMin = event.target.min.value;
-  var locationAvg = event.target.avg.value;
-  var newLocations = new Resturant(locationName, locationMax, locationMin, locationAvg);
-  newLocations.render();
+  var locationMax = parseInt(event.target.max.value);
+  var locationMin = parseInt(event.target.min.value);
+  var locationAvg = parseInt(event.target.avg.value);
+
+  /*var oldFooter = document.getElementById('footer');
+  oldFooter.parentNode.removeChild(oldFooter);*/
+  tableEl.removeChild(tableEl.lastChild);
+  new Resturant(locationName, locationMax, locationMin, locationAvg);
+  //newLocations.render();
+  //console.log(newLocations);
+  newTotalOfTotal(); 
+
 });
 //create new objects
 new Resturant('Seattle', 23, 65, 6.3);
@@ -121,13 +132,12 @@ new Resturant('Dubi', 11, 38, 3.7);
 new Resturant('Paris', 20, 38, 2.3);
 new Resturant('Lima', 2, 16, 4.6);
 //call the render function
-for (var i = 0; i < salmonsShops.length; i++) {
+/*for (var i = 0; i < salmonsShops.length; i++) {
   salmonsShops[i].render();
  //console.log(salmonsShops);
-}
+}*/
 //call the footer of my table 
 //lastRow();
-newTotalOfTotal(); 
 //helper function to calculate random number of customer
 function getRandom(min, max) {
   min = Math.ceil(min);
@@ -135,20 +145,6 @@ function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }//The maximum is exclusive and the minimum is inclusive
 
+//newTotalOfTotal(); 
 
-/*Resturant.prototype.footer = function (){
-  var trEl = document.createElement('tr');
-  tableEl.appendChild(trEl);
-  var tdEl = document.createElement('td');
-  trEl.appendChild(tdEl);
-  tdEl.textContent = newLocations.locationName;
 
-  for(var m = 0; m < arrayHours.length; m++){
-  var tdEl = document.createElement('td');
-  tdEl.textContent = newLocations[m];
-  trEl.appendChild(tdEl);
-  }
-  var tdEl = document.createElement('td');
-  tdEl.textContent = finalTotal;
-  trEl.appendChild(tdEl);
-}*/
