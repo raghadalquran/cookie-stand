@@ -6,33 +6,38 @@ body {
     padding: 30px;
     margin: -7px;
     background-color: wheat;
-    color: #135848;
+    color:  #99462b;
     width: 100%;
+    font-family: 'Yeon Sung' ;
+
 }
 main{
     height: 550px;
 }
 div {
-    margin: 50px;
+    margin: 10px;
     padding: 2px;
     border: 0;
     font-size: 100%;
     font: initial;
     vertical-align: baseline;
     width: 290px;
+    margin-top: 10px;
+    margin-left: -8px;
 }
 h1 {
     padding-top: 63px;;
     font-size: 300%;
     padding-bottom: 25px;
-    color: #135848;
-    text-align: center;
-    padding-left: 6px;
+    color: #27292b;
+    text-align: left;
+    padding-left: 35px;
     background-color: #b7816c; 
     margin-right: -25px;
     margin-left: -25px;
     padding-bottom: 85px;
     margin-top: -24px;
+    font-family: 'Lacquer','Yeon Sung' ;
 }
 h2 {
     padding:10px;
@@ -40,15 +45,19 @@ h2 {
     font: bolder;
     font-size: 36px;
     text-align: center;
-    color:#135848;
+    color:#27292b;
+    font-family: 'Lacquer','Yeon Sung' ;
+    padding-top: 12px;
 }
 h3 {
     font-size: 25px;
     padding: 4px;
-    color: #135848;
+    color: #27292b;
     margin: -3px;
     display: unset;
     font: bold;
+    font-family:'Lacquer',cursive,'Yeon Sung' ;
+
     }
 ul li  {
     margin: 3px;
@@ -59,13 +68,18 @@ ul li  {
     vertical-align: baseline;
     display: inline;
     text-align: center;
+    
+    }
+    ul{
+        margin-top: -36px;
     }
 p {
     padding: 10px;
-    width: 100%;
-    text-align: justify;
+    width: 838px;    text-align: justify;
     padding-bottom: 30px;
     font:bold;
+    text-indent: 6mm;
+    font-family: cursive;
     }
 #Our-Busniss {
     padding: 10px;
@@ -74,37 +88,46 @@ p {
      }
 img {
     float: right;
-    width: 392px;
+    width: 400px;
     height: 176px;
+    padding-top: 0px;
+    padding-right: 30px;
     }
 iframe{
         
     width: 14%;
     height: 201px;
+    padding-left: 11px;
+   
     }
 a {
         text-decoration: none;
-        color:#135848;
+        color:#27292b;
         text-align: center;
      }
 footer{
         background-color: #b7816c;
         margin-right: -25px;
         margin-left: -22px;
-
-     }
+        width:100%;
+        height: 153px; 
+        margin-top: 32px;
+    }
     
 table , tr , td , th {
     border: 1px solid black;
-    margin: 5px;
+    margin: 18px;
     padding: 10px;
     font-size: 100%;
     font: -webkit-xxx-large;
     vertical-align: baseline;
-    background-color: teal;
-    font-family: cursive;
+    background-color: #8cb595;
+    font-family: 'Yeon Sung' ;
     color: white;
     text-align: center;
+    margin-top: 90px;
+    margin-left: 244px;
+
 }
 
 form-style-5{
@@ -115,7 +138,8 @@ form-style-5{
 	padding: 20px;
 	background: #f4f7f8;
 	border-radius: 8px;
-	font-family: Georgia, "Times New Roman", Times, serif;
+    font-family:'Yeon Sung', Georgia, "Times New Roman", Times, serif;
+ 
 }
 .form-style-5 fieldset{
 	border: none;
@@ -130,7 +154,7 @@ form-style-5{
 }
 
 .form-style-5 input[type="text"]{
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family:'Yeon Sung',Georgia, "Times New Roman", Times, serif;
 	background: rgba(255,255,255,.1);
 	border: none;
 	border-radius: 4px;
@@ -160,7 +184,7 @@ form-style-5{
 	padding: 19px 39px 18px 39px;
 	color: #FFF;
 	margin: 0 auto;
-	background: #1abc9c;
+	background: #b7816c;
 	font-size: 18px;
 	text-align: center;
 	font-style: normal;
@@ -176,3 +200,42 @@ form-style-5{
  #Locations{
       width: 130%;
  }
+.seattle-opening{
+    display: inline-block;
+    margin-top: 18px;
+    margin-left: 99px;
+    width: 132px;
+}
+.tokyo-opening{
+    display: inline-block;
+    margin-top: 18px;
+    margin-left: 99px;
+    width: 132px;
+}
+.dubi-opening{
+    display: inline-block;
+    margin-top: 18px;
+    margin-left: 99px;
+    width: 132px;
+}
+.paris-opening{
+    display: inline-block;
+    margin-top: 18px;
+    margin-left: 99px;
+    width: 132px;
+}
+.lima-opening{
+    display: inline-block;
+    margin-top: 18px;
+    margin-left: 88px;
+    width: 132px;
+}
+form#locations{
+    font-family:'Yeon Sung', Georgia, "Times New Roman", Times, serif;
+    margin-top: 45px;
+    margin-left: 473px;
+    background-color: #8cb595;
+    width: 316px;
+    padding: 21px;
+}
+

@@ -20,7 +20,8 @@ function Resturant(name, minCust, maxCust, averageCookies) {
   this.getTheRandom();
   //this.newLocations;
   salmonsShops.push(this);
-this.render();}
+  this.render();
+}
 //calculate the random  
 Resturant.prototype.getTheRandom = function () {
   var numOfCustomer = getRandom(this.minCust, this.maxCust);
@@ -91,20 +92,6 @@ function newTotalOfTotal() {
   tdTotal.textContent = megaTotal;
   trElF.appendChild(tdTotal);
 }
-//new
-//for last row in the table
-/*function lastRow() {
-  for (var m = 0; m < arrayHours.length; m++) {
-    var tdEl = document.createElement('td');
-    tdEl.textContent = newLocations[m];
-    trEl.appendChild(tdEl);
-  }
-  //remove the footer
-//var oldFooter = document.getElementById('footer');
-//oldFooter.parentNode.removeChild(oldFooter);
-newTotalOfTotal(); 
-
-}*/
 //call the header of the table
 header();
 //creat new location to my table from the form
@@ -115,14 +102,11 @@ locations.addEventListener('submit', function (event) {
   var locationMax = parseInt(event.target.max.value);
   var locationMin = parseInt(event.target.min.value);
   var locationAvg = parseInt(event.target.avg.value);
-
-  /*var oldFooter = document.getElementById('footer');
-  oldFooter.parentNode.removeChild(oldFooter);*/
+  //remove the footer
   tableEl.removeChild(tableEl.lastChild);
   new Resturant(locationName, locationMax, locationMin, locationAvg);
-  //newLocations.render();
-  //console.log(newLocations);
-  newTotalOfTotal(); 
+  //call the footer
+  newTotalOfTotal();
 
 });
 //create new objects
@@ -131,20 +115,11 @@ new Resturant('Tokyo', 3, 24, 1.2);
 new Resturant('Dubi', 11, 38, 3.7);
 new Resturant('Paris', 20, 38, 2.3);
 new Resturant('Lima', 2, 16, 4.6);
-//call the render function
-/*for (var i = 0; i < salmonsShops.length; i++) {
-  salmonsShops[i].render();
- //console.log(salmonsShops);
-}*/
-//call the footer of my table 
-//lastRow();
 //helper function to calculate random number of customer
 function getRandom(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
-}//The maximum is exclusive and the minimum is inclusive
-
-//newTotalOfTotal(); 
+}
 
 
