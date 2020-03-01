@@ -107,6 +107,8 @@ locations.addEventListener('submit', function (event) {
   new Resturant(locationName, locationMax, locationMin, locationAvg);
   //call the footer
   newTotalOfTotal();
+  document.getElementById("locations").reset();
+
 
 });
 //create new objects
